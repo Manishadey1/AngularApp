@@ -13,6 +13,15 @@ export class ColorsComponent implements OnInit {
   constructor(private colorService: ColorService) { }
 
   ngOnInit(): void {
+
+    this.fetchNewColor();
+  }
+
+  refresh(){
+    this.fetchNewColor();
+  }
+
+  fetchNewColor(){
     this.colorService.getRandomColor().subscribe((data)=>{
       if(data){
         this.color = new ColorModel(data.id, data.uid, data.hex_value, data.color_name)
